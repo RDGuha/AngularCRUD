@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="collaborationApp">
+<head>
+<meta charset="ISO-8859-1">
+
+<script src="resources/angular.js"></script>
+<script src="resources/bootstrap.js"></script>
+<script src="resources/jquery-1.11.2.min.js"></script>
+<script src="resources/jquery.min.js"></script>
+<link rel="stylesheet" href="resources/bootstrap.css">
+
+<script src = "BlogController.js"></script>
+
+<title>Welcome to Bloggers</title>
+</head>
+<body ng-controller="blogcontroller">
+
+Search Blog: <input type="text" ng-model="searchkeyword">
+<table class="table">
+	<tr>
+		<th>BlogId</th>
+		<th>title</th>
+		<th>Description</th>
+		<th>Action</th>
+	</tr>
+	<tr ng-repeat="blog in blogs | filter: searchkeyword">
+		<td> {{blog.id}} </td>
+		<td> {{ blog.title }} </td>
+		<td> {{ blog.description }} </td>
+		<td>
+			<input type="button" value="Remove" class="btn btn-primary" 
+			ng-click="removeRow(blog.id)" />
+		</td>
+		<td>
+			<input type="button" value="Update" class="btn btn-primary" 
+			ng-click="updateRow(blog.id)" />
+		</td>
+	</tr>
+</table>
+<br><br>
+<input type="text" ng-model="b_id" required />
+<input type="text" ng-model="b_title" required />
+<input type="text" ng-model="b_description"required />
+<input type="button" value="Add"  class="btn btn-primary" ng-click="addRow()" /><br>
+
+</body>
+</html>
